@@ -1,0 +1,16 @@
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Create Department</h5>
+        <form class="row g-3" (ngSubmit) = "onSubmit()">
+          <div class="col-12">
+            <label for="inputNanme4" class="form-label" >Department name</label>
+            <input type="text" [(ngModel)] = "entity.name"  class="form-control" id="inputNanme4" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary"  style="margin-right: 10px;">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form><!-- Vertical Form -->
+
+</div>

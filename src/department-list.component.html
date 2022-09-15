@@ -1,0 +1,28 @@
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Department List</h5>
+              <button class="btn btn-primary" (click)="goToCreate()">Create</button>
+              <button class="btn btn-primary" (click)="goToEmployeeList()" style="margin-left: 10px;">Employee List</button>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor = "let entity of entities" >
+                    <td>{{entity.name}}</td>
+                    <td>
+                        <button (click) = "update(entity.id)" class = "btn btn-info"> Update</button>
+                        <button (click) = "delete(entity.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
