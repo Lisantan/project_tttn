@@ -1,0 +1,292 @@
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/dashboard">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Trang chủ</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Quản trị nhân sự
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/employees">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Nhân viên</span></a>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-file"></i>
+                <span>Văn bản</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Văn bản:</h6>
+                    <a class="collapse-item" routerLink="/contracts">Hợp đồng lao động</a>
+                    <a class="collapse-item" routerLink="/laws">Nội quy, quy định</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Cơ cấu tổ chức
+        </div>
+
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/positions">
+                <i class="fas fa-fw fa-crosshairs"></i>
+                <span>Vị trí, chức vụ</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/departments">
+                <i class="fas fa-fw fa-database"></i>
+                <span>Phòng ban ngành</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Cơ cấu tiền lương
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/salaries">
+                <i class="fas fa-fw fa-dollar-sign"></i>
+                <span>Khoản chi nhân sự</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/timekeepingmonths">
+                <i class="fas fa-fw fa-flag"></i>
+                <span>Chấm công</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/bonuses">
+                <i class="fas fa-fw fa-cloud"></i>
+                <span>Quy chế thưởng phạt</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" *ngIf="this.currentUser.roles == 'ROLE_ADMIN'">
+
+         <!-- Heading -->
+        <div class="sidebar-heading" *ngIf="this.currentUser.roles == 'ROLE_ADMIN'">
+            Quản lí tài khoản
+        </div>
+
+        <li class="nav-item" *ngIf="this.currentUser.roles == 'ROLE_ADMIN'">
+            <a class="nav-link" routerLink="/accounts">
+                <i class="fas fa-fw fa-lock"></i>
+                <span>Tài khoản</span></a>
+        </li>
+        
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Search -->
+                <h5 style="margin-top: 10px">Xin chào: {{this.currentUser.username}}</h5>
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{this.currentUser.username}}</span>
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                            <a class="dropdown-item" routerLink="/profile">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Trang cá nhân
+                            </a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Đăng xuất
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Thông tin khen thưởng - xử phạt</h1>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3" *ngIf="this.currentUser.roles == 'ROLE_ADMIN'" >
+                        <form class="row g-3">
+                            <div class="col-3">
+                                <label for="employee" class="form-label">Nhân viên</label>
+                                <select class="form-control" id="position"  [(ngModel)]="entity.employee" [ngModelOptions]="{standalone: true}">
+                                    <option *ngFor="let employee of employees" [ngValue]="employee">{{employee.idEmployee}} {{employee.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label for="reason" class="form-label">Lý do</label>
+                                <input type="text" [(ngModel)]="entity.reason" class="form-control" id="reason"
+                                       [ngModelOptions]="{standalone: true}" >
+                            </div>
+                            <div class="col-3">
+                                <label for="money" class="form-label">Tiền thưởng - phạt</label>
+                                <input type="text" [(ngModel)]="entity.money" class="form-control" id="money"
+                                       [ngModelOptions]="{standalone: true}" >
+                            </div>
+                            <div class="col-3">
+                                <button *ngIf="this.functionFlag == false" (click)="create()"
+                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" 
+                                style="margin-left: 5px; margin-top: 35px;">
+                                    <i class="fas fa-plus fa-sm text-white-50"></i> Thêm mới </button>
+
+                                <button *ngIf="this.functionFlag == true" (click)="update(entity.id)"
+                                class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" 
+                                style="margin-left: 5px; margin-top: 35px;">
+                                    <i class="fas fa-pen fa-sm text-white-50"></i> Cập nhật </button>
+
+                                <button *ngIf="this.functionFlag == true" (click)="delete(entity.id)"
+                                class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" 
+                                style="margin-left: 5px; margin-top: 35px;">
+                                    <i class="fas fa-trash fa-sm text-white-50"></i> Xóa </button>
+
+                                <button type="reset" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm" 
+                                style="margin-left: 5px; margin-top: 35px;" (click)="changeModeFalse()">
+                                    <i class="fas fa-ban fa-sm text-white-50"></i> Cài đặt lại </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Mã nhân viên</th>
+                                        <th>Tên nhân viên</th>
+                                        <th>Lí do</th>
+                                        <th>Tiền thưởng - xử phạt</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Mã nhân viên</th>
+                                        <th>Tên nhân viên</th>
+                                        <th>Lí do</th>
+                                        <th>Tiền thưởng - xử phạt</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr *ngFor = "let e of entities" (click)="changeMode(e.id)">
+                                        <td>{{e.employee?.idEmployee}}</td>
+                                        <td>{{e.employee?.name}}</td>
+                                        <td>{{e.reason}}</td>
+                                        <td>{{e.money}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2020</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+Logout Modal
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn đăng xuất?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" (click)="logout()">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+</div>
+

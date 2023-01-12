@@ -1,0 +1,69 @@
+<div style="height: 100%; width: 100%;z-index: 100; position: fixed;" class="bg-gradient-primary">
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <a routerLink="/login">
+                                            <div class="sidebar-brand-text mx-3" style="font-size: 36px; text-decoration: none; font-weight: 500;"><i class="fas fa-laugh-wink"></i>   SB Admin <sup>2</sup></div>
+                                        </a>
+                                        <br><br>
+                                    </div>
+                                    <form class="user" *ngIf="!isLoggedIn" name="form" #f="ngForm" 
+                                            novalidate (ngSubmit)="f.form.valid && onSubmit()">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Tên người dùng" name="username" [(ngModel)]="form.username"
+                                                required #username="ngModel"
+                                                [ngClass]="{ 'is-invalid': f.submitted && username.errors }" />
+                                        </div>
+                                        <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+                                            Tên người dùng chưa được nhập
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Mật khẩu"
+                                                name="password" [(ngModel)]="form.password"
+                                                required minlength="6" #password="ngModel"
+                                                [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Nhớ tài khoản</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+                                            Đăng nhập thất bại: {{ errorMessage }}
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="btn btn-primary btn-block btn-user">
+                                            Đăng nhập
+                                        </button>
+
+                                    </form>
+                                    <!-- <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" routerLink="/register">Create an Account!</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
